@@ -59,4 +59,21 @@ describe("Wheel Class", () => {
     expect(wheel.choose()).toEqual(b1);
     expect(wheel.choose()).toEqual(b2);
   });
+
+  it("should add outcomes to allOutcomes", () => {
+    const o1 = new Outcome("Red", 1);
+    const o2 = new Outcome("Black", 1);
+    const o3 = new Outcome("Even", 1);
+    const wheel = new Wheel();
+
+    wheel.addOutcome(1, o1);
+    wheel.addOutcome(1, o3);
+    wheel.addOutcome(2, o2);
+    wheel.addOutcome(2, o1);
+    wheel.addOutcome(2, new Outcome("Red", 10));
+
+    expect(wheel.getOutcome(o1.name)).toEqual(o1);
+    expect(wheel.getOutcome(o2.name)).toEqual(o2);
+    expect(wheel.getOutcome(o3.name)).toEqual(o3);
+  });
 });
