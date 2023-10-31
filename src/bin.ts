@@ -24,8 +24,12 @@ export class Bin extends Set<Outcome> {
     });
   }
 
-  // Immutable Set cann't add
-  add(): this {
+  add(outcome: Outcome): this {
+    const outcomeHash = outcome.hash();
+    if (!this._existingHashes.has(outcomeHash)) {
+      super.add(outcome);
+      this._existingHashes.add(outcomeHash);
+    }
     return this;
   }
   // Immutable Set cann't clear
