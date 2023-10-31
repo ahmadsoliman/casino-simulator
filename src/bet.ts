@@ -2,16 +2,16 @@ import { Outcome } from "./outcome";
 
 export class Bet {
   constructor(
-    private amount: number,
-    private outcome: Outcome
+    private _amount: number,
+    private _outcome: Outcome
   ) {}
   winAmount() {
-    return this.amount + this.outcome.winAmount(this.amount);
+    return this._amount + this._outcome.winAmount(this._amount);
   }
   loseAmount() {
-    return this.amount;
+    return this._amount;
   }
   toString() {
-    return `$${this.amount} on (${this.outcome.toString()})`;
+    return `$${this._amount} on (${this._outcome.toString()})`;
   }
 }
