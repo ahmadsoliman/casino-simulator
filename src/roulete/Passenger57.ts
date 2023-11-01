@@ -1,5 +1,5 @@
 import { Bet, Outcome, Table } from "../core";
-import { Player } from "./Player";
+import { Player } from "./player";
 import { BETS, BET_NAMES } from "./constants";
 import { Wheel } from "./wheel";
 

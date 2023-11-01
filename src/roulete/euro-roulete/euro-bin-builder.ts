@@ -1,11 +1,20 @@
 import { Outcome } from "../../core";
-import { BETS, BET_NAMES, BET_ODDS, BinBuilder, WHEEL_SIZE, Wheel } from "..";
+import {
+  BETS,
+  BET_NAMES,
+  BET_ODDS,
+  BinBuilder,
+  PrisonOutcome,
+  WHEEL_SIZE,
+  Wheel,
+} from "..";
 
 export class EuroBinBuilder extends BinBuilder {
   generateStraightBets(wheel: Wheel) {
     const name = BET_NAMES[BETS.STRAIGHT];
     const odds = BET_ODDS[BETS.STRAIGHT];
-    for (let i = 0; i < WHEEL_SIZE - 1; i++) {
+    wheel.addOutcome(0, new PrisonOutcome(`${name} 0`, odds));
+    for (let i = 1; i < WHEEL_SIZE - 1; i++) {
       wheel.addOutcome(i, new Outcome(`${name} ${i}`, odds));
     }
   }

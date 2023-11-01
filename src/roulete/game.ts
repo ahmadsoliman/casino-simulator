@@ -2,7 +2,7 @@
 // Game manages the sequence of actions that defines the game of Roulette. This includes notifying the Player object to place bets, spinning the Wheel object and resolving the Bet instances actually present on the Table object.
 
 import { Table } from "../core";
-import { Passenger57 } from "./Passenger57";
+import { Player } from "./player";
 import { Wheel } from "./wheel";
 
 export class Game {
@@ -11,7 +11,7 @@ export class Game {
     private _table: Table
   ) {}
 
-  cycle(player: Passenger57) {
+  cycle(player: Player) {
     player.placeBets();
 
     const winningBin = this._wheel.choose();
