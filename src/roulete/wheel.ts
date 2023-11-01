@@ -1,8 +1,8 @@
-import { Bin } from "./bin";
+import { Bin } from "../core/bin";
 import { WHEEL_SIZE } from "./constants";
-import { InvalidBinIndex, InvalidOutcome } from "./exceptions";
-import { Outcome } from "./outcome";
-import { rand } from "./utils/rng";
+import { InvalidBinIndex, InvalidOutcome } from "../core/exceptions";
+import { Outcome } from "../core/outcome";
+import { rand } from "../utils/rng";
 
 export class Wheel {
   private _bins: Bin[];

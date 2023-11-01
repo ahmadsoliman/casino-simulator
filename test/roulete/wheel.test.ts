@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { Bin, Outcome, WHEEL_SIZE, Wheel } from "../src";
-import { rand } from "../src/utils/rng";
+import { Bin, Outcome, WHEEL_SIZE, Wheel } from "../../src";
+import { rand } from "../../src/utils";
 
 describe("Wheel Class", () => {
   it("should add bins to wheel", () => {

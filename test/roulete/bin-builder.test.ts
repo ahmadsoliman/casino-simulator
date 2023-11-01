@@ -9,7 +9,7 @@ import {
   BET_ODDS,
   WHEEL_SIZE,
   DOUBLE_ZERO_INDEX,
-} from "../src";
+} from "../../src";
 
 describe("Bin Builder Class", () => {
   let wheel: Wheel;

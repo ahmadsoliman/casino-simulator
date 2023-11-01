@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Outcome, Bet, Table, InvalidBet } from "../src";
+import { Outcome, Bet, Table, InvalidBet } from "../../src";
 
 describe("Table Class", () => {
   it("", () => {

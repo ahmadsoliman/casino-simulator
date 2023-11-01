@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Outcome, Bet } from "../src";
+import { Outcome, Bet } from "../../src";
 
 describe("Bet Class", () => {
   it("Initialize bet with different inputs correctly", () => {

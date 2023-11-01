@@ -6,7 +6,7 @@ import {
   REDS,
   WHEEL_SIZE,
 } from "./constants";
-import { Outcome } from "./outcome";
+import { Outcome } from "../core/outcome";
 import { Wheel } from "./wheel";
 
 export class BinBuilder {

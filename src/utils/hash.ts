@@ -1,4 +1,4 @@
-export default function hash(s: string) {
+export const hash = (s: string) => {
   //set variable hash as 0
   let hash = 0;
 
@@ -10,4 +10,4 @@ export default function hash(s: string) {
     hash = hash & hash;
   }
   return hash;
-}
+};

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Outcome } from "../src";
+import { Outcome } from "../../src";
 
 describe("Outcome Class", () => {
   it("Calculates win amount and handles equality correctly", () => {

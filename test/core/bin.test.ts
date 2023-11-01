@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Outcome, Bin } from "../src";
+import { Outcome, Bin } from "../../src";
 
 describe("Bin Class", () => {
   it("Initialize bin with different inputs correctly", () => {

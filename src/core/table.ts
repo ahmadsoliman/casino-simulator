@@ -1,4 +1,4 @@
-import { Bet } from "./bet";
+import { Bet } from "../core/bet";
 import { InvalidBet } from "./exceptions";
 
 export class Table {

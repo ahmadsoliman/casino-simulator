@@ -1,4 +1,4 @@
-import hash from "./utils/hash";
+import { hash } from "../utils/";
 
 export class Outcome {
   constructor(
