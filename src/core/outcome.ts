@@ -8,6 +8,9 @@ export class Outcome {
   winAmount(amount: number) {
     return amount * this.odds;
   }
+  loseAmount(amount: number) {
+    return amount;
+  }
   valueOf() {
     return this.name;
   }

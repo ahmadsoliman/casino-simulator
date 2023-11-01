@@ -22,7 +22,7 @@ export class Bet {
     return this._amount + this._outcome.winAmount(this._amount);
   }
   loseAmount() {
-    return this._amount;
+    return this._outcome.loseAmount(this._amount);
   }
   toString() {
     return `$${this._amount} on (${this._outcome.toString()})`;
