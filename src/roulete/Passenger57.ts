@@ -1,6 +1,6 @@
 import { Bet, Outcome, Table } from "../core";
-import { Player } from "./player";
 import { BETS, BET_NAMES } from "./constants";
+import { Player } from "./player";
 import { Wheel } from "./wheel";
 
 export class Passenger57 extends Player {
@@ -13,7 +13,6 @@ export class Passenger57 extends Player {
     super();
     this.black = _wheel.getOutcome(BET_NAMES[BETS.BLACK]);
   }
-
   placeBets() {
     this._table.placeBet(new Bet(100, this.black));
   }
