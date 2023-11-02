@@ -32,3 +32,12 @@ const defaultSeed = cyrb128(new Date().toISOString());
 export const rand = (seed = defaultSeed[0]) => {
   return mulberry32(seed);
 };
+
+export const getRandomIndicesWithSeed = (
+  seed: number,
+  length: number,
+  count = 10
+) => {
+  const rng = rand(seed);
+  return [...Array(count)].map(() => Math.round(rng() * (length - 1)));
+};

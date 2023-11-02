@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { Bin, Outcome, WHEEL_SIZE, Wheel } from "../../src";
-import { rand } from "../../src/utils";
+import { getRandomIndicesWithSeed } from "../../src/utils";
 
 describe("Wheel Class", () => {
   it("should add bins to wheel", () => {
@@ -35,10 +35,7 @@ describe("Wheel Class", () => {
 
   it("should choose correct random bin", () => {
     const seed = 111;
-    const rng = rand(seed);
-    const randomIndices = [...Array(4)].map(() =>
-      Math.round(rng() * (WHEEL_SIZE - 1))
-    );
+    const randomIndices = getRandomIndicesWithSeed(seed, WHEEL_SIZE);
 
     const wheel = new Wheel(seed);
     const o1 = new Outcome("Red", 1);
