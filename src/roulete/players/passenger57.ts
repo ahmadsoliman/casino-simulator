@@ -1,18 +1,17 @@
 import { Bet, Outcome, Table } from "../../core";
-import { Player } from "../player";
 import { BETS, BET_NAMES } from "../constants";
+import { Player } from "../player";
 import { Wheel } from "../wheel";
 
-export class EuroZeroPlayer extends Player {
-  private zero: Outcome;
+export class Passenger57 extends Player {
+  private black: Outcome;
 
   constructor(table: Table, wheel: Wheel, stake: number, roundsToGo: number) {
     super(table, wheel, stake, roundsToGo);
-    this.zero = wheel.getOutcome(BET_NAMES[BETS.STRAIGHT] + " 0");
+    this.black = wheel.getOutcome(BET_NAMES[BETS.BLACK]);
   }
-
   placeBets() {
-    this.table.placeBet(new Bet(100, this.zero));
+    this.table.placeBet(new Bet(this.table.minimum, this.black));
     super.placeBets();
   }
 }

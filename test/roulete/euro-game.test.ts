@@ -8,7 +8,7 @@ describe("Euro Game", () => {
     euroBinBuilder.buildBins(wheel);
 
     const table = new Table();
-    const player = new EuroZeroPlayer(table, wheel);
+    const player = new EuroZeroPlayer(table, wheel, 1000, 10);
     const game = new Game(wheel, table);
 
     game.cycle(player);

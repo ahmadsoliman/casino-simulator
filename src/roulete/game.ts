@@ -12,21 +12,23 @@ export class Game {
   ) {}
 
   cycle(player: Player) {
-    player.placeBets();
-
-    const winningBin = this._wheel.choose();
-
     const winningBets: Bet[] = [];
 
-    this._table.bets.forEach(bet => {
-      if (winningBin.has(bet.outcome)) {
-        player.win(bet);
-        winningBets.push(bet);
-      } else {
-        player.lose(bet);
-      }
-      this._table.deleteBet(bet);
-    });
+    if (player.isPlaying()) {
+      player.placeBets();
+
+      const winningBin = this._wheel.choose();
+
+      this._table.bets.forEach(bet => {
+        if (winningBin.has(bet.outcome)) {
+          player.win(bet);
+          winningBets.push(bet);
+        } else {
+          player.lose(bet);
+        }
+        this._table.deleteBet(bet);
+      });
+    }
 
     return winningBets;
   }
