@@ -6,6 +6,14 @@ import { Player } from "./player";
 import { Wheel } from "./wheel";
 
 export class Game {
+  public get wheel(): Wheel {
+    return this._wheel;
+  }
+
+  public get table(): Table {
+    return this._table;
+  }
+
   constructor(
     private _wheel: Wheel,
     private _table: Table

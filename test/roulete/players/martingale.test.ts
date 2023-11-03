@@ -1,12 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { BinBuilder, Martingale, Table, WHEEL_SIZE, Wheel } from "../../../src";
-import { getRandomIndicesWithSeed } from "../../../src/utils";
+import { BinBuilder, Martingale, Table, Wheel } from "../../../src";
 
 describe("Martingale Player Class", () => {
   it("should simulate game for player", () => {
     const seed = 11;
-    const randomIndices = getRandomIndicesWithSeed(seed, WHEEL_SIZE);
-    console.log(randomIndices);
+    // const randomIndices = getRandomIndicesWithSeed(seed, WHEEL_SIZE);
 
     const wheel = new Wheel(seed);
     const binBuilder = new BinBuilder();

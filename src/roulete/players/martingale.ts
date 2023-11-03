@@ -29,4 +29,8 @@ export class Martingale extends Player {
     super.lose(bet);
     this.lossCount++;
   }
+  reInit(stake: number, roundsToGo: number): void {
+    super.reInit(stake, roundsToGo);
+    this.lossCount = 0;
+  }
 }
