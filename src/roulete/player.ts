@@ -1,4 +1,4 @@
-import { Bet, Table } from "../core";
+import { Bet, Outcome, Table } from "../core";
 import { Wheel } from "./wheel";
 
 export abstract class Player {
@@ -16,6 +16,9 @@ export abstract class Player {
   win(bet: Bet) {
     this.stake += bet.winAmount();
     // console.log(`Won $${bet.winAmount()} for bet: ${bet.toString()}`);
+  }
+  winners(_outcomes: Set<Outcome>) {
+    _outcomes.size;
   }
   lose(bet: Bet) {
     this.stake -= bet.loseAmount();

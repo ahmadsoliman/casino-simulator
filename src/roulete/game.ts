@@ -36,6 +36,8 @@ export class Game {
         }
         this._table.deleteBet(bet);
       });
+
+      player.winners(winningBin);
     }
 
     return winningBets;
