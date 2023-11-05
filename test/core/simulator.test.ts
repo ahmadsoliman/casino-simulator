@@ -3,12 +3,12 @@ import {
   BinBuilder,
   Game,
   Martingale,
+  PlayerRandom,
   SevenReds,
   Simulator,
   Table,
   Wheel,
 } from "../../src";
-import { IntegerStatistics } from "../../src/utils";
 
 describe("Simulator Class", () => {
   it("should run simulator with a Martingale player", () => {
@@ -39,16 +39,6 @@ describe("Simulator Class", () => {
       1410, 1130, 1180, 2170, 2920, 2430, 3020, 2130, 1370, 2180, 3390, 4320,
       1070, 1280,
     ]);
-
-    const durationsStatistics = new IntegerStatistics(...simulator.durations);
-    const maximaStatistics = new IntegerStatistics(...simulator.maxima);
-
-    console.log(`Simulation data:
-      Duration Mean: ${durationsStatistics.mean()}
-      Duration Standard Deviation: ${durationsStatistics.standardDeviation()}
-      Maxima Mean: ${maximaStatistics.mean()}
-      Maxima Standard Deviation: ${maximaStatistics.standardDeviation()}
-    `);
   });
   it("should run simulator with a SevenReds player", () => {
     const seed = 111;
@@ -79,15 +69,35 @@ describe("Simulator Class", () => {
       1860, 1080, 1000, 1020, 1050, 3920, 1270, 2260, 1620, 1930, 2070, 1460,
       2110, 3310,
     ]);
+  });
+  it("should run simulator with a PlayerRandom player", () => {
+    const seed = 111;
+    // const randomIndices = getRandomIndicesWithSeed(seed, WHEEL_SIZE);
 
-    const durationsStatistics = new IntegerStatistics(...simulator.durations);
-    const maximaStatistics = new IntegerStatistics(...simulator.maxima);
+    const wheel = new Wheel(seed);
+    const binBuilder = new BinBuilder();
+    binBuilder.buildBins(wheel);
 
-    console.log(`Simulation data:
-      Duration Mean: ${durationsStatistics.mean()}
-      Duration Standard Deviation: ${durationsStatistics.standardDeviation()}
-      Maxima Mean: ${maximaStatistics.mean()}
-      Maxima Standard Deviation: ${maximaStatistics.standardDeviation()}
-    `);
+    const table = new Table();
+    const game = new Game(wheel, table);
+
+    const player = new PlayerRandom(table, wheel, 1000, 250, seed);
+
+    const simulator = new Simulator(game, player);
+    simulator.gather();
+
+    expect(simulator.durations).toEqual([
+      250, 250, 250, 191, 239, 250, 250, 250, 250, 250, 250, 250, 176, 250, 250,
+      250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250,
+      250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 234, 250,
+      250, 250, 250, 250, 250,
+    ]);
+    expect(simulator.maxima).toEqual([
+      1180, 2110, 2000, 1080, 1060, 2740, 1820, 1850, 2400, 1830, 2400, 1510,
+      1080, 1710, 1660, 1630, 1090, 1100, 1240, 1670, 1410, 1710, 2680, 1410,
+      2000, 1240, 2280, 1260, 1780, 1850, 2110, 2050, 1670, 990, 2940, 1000,
+      990, 2250, 1150, 1830, 1310, 2470, 1660, 990, 1000, 1850, 1610, 2100,
+      2620, 1140,
+    ]);
   });
 });

@@ -3,6 +3,7 @@
 
 import { Game } from "../roulete";
 import { Player } from "../roulete/player";
+import { IntegerStatistics } from "../utils";
 
 export class Simulator {
   private _initDuration = 250;
@@ -51,5 +52,15 @@ export class Simulator {
       this._durations.push(stakes.length);
       this._maxima.push(Math.max(...stakes));
     }
+
+    const durationsStatistics = new IntegerStatistics(...this._durations);
+    const maximaStatistics = new IntegerStatistics(...this._maxima);
+
+    console.log(`Simulation data:
+      Duration Mean: ${durationsStatistics.mean()}
+      Duration Standard Deviation: ${durationsStatistics.standardDeviation()}
+      Maxima Mean: ${maximaStatistics.mean()}
+      Maxima Standard Deviation: ${maximaStatistics.standardDeviation()}
+    `);
   }
 }

@@ -33,6 +33,10 @@ export const rand = (seed = defaultSeed[0]) => {
   return mulberry32(seed);
 };
 
+export const chooseRand = (rng: () => number, range: number) => {
+  return Math.round(rng() * (range - 1));
+};
+
 export const getRandomIndicesWithSeed = (
   seed: number,
   length: number,
