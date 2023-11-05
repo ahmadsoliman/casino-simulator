@@ -8,6 +8,7 @@ import {
   Table,
   Wheel,
 } from "../../src";
+import { IntegerStatistics } from "../../src/utils";
 
 describe("Simulator Class", () => {
   it("should run simulator with a Martingale player", () => {
@@ -39,15 +40,15 @@ describe("Simulator Class", () => {
       1070, 1280,
     ]);
 
+    const durationsStatistics = new IntegerStatistics(...simulator.durations);
+    const maximaStatistics = new IntegerStatistics(...simulator.maxima);
+
     console.log(`Simulation data:
-      Average Duration: ${
-        simulator.durations.reduce((pr, cur) => pr + cur, 0) /
-        simulator.durations.length
-      }
-      Average Maxima: ${
-        simulator.maxima.reduce((pr, cur) => pr + cur, 0) /
-        simulator.maxima.length
-      }`);
+      Duration Mean: ${durationsStatistics.mean()}
+      Duration Standard Deviation: ${durationsStatistics.standardDeviation()}
+      Maxima Mean: ${maximaStatistics.mean()}
+      Maxima Standard Deviation: ${maximaStatistics.standardDeviation()}
+    `);
   });
   it("should run simulator with a SevenReds player", () => {
     const seed = 111;
@@ -79,14 +80,14 @@ describe("Simulator Class", () => {
       2110, 3310,
     ]);
 
+    const durationsStatistics = new IntegerStatistics(...simulator.durations);
+    const maximaStatistics = new IntegerStatistics(...simulator.maxima);
+
     console.log(`Simulation data:
-      Average Duration: ${
-        simulator.durations.reduce((pr, cur) => pr + cur, 0) /
-        simulator.durations.length
-      }
-      Average Maxima: ${
-        simulator.maxima.reduce((pr, cur) => pr + cur, 0) /
-        simulator.maxima.length
-      }`);
+      Duration Mean: ${durationsStatistics.mean()}
+      Duration Standard Deviation: ${durationsStatistics.standardDeviation()}
+      Maxima Mean: ${maximaStatistics.mean()}
+      Maxima Standard Deviation: ${maximaStatistics.standardDeviation()}
+    `);
   });
 });
