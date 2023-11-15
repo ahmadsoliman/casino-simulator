@@ -17,10 +17,10 @@ export class PlayerRandom extends Player {
     this._rng = rand(seed);
   }
   placeBets() {
-    const outcomeNames = [...this.wheel.allOutcomes.keys()];
+    const outcomeNames = [...this._wheel.allOutcomes.keys()];
     const randomKey = outcomeNames[chooseRand(this._rng, outcomeNames.length)];
-    const randomOutcome = this.wheel.allOutcomes.get(randomKey);
-    this.table.placeBet(new Bet(this.table.minimum, randomOutcome!));
+    const randomOutcome = this._wheel.allOutcomes.get(randomKey);
+    this._table.placeBet(new Bet(this._table.minimum, randomOutcome!));
     super.placeBets();
   }
 }

@@ -28,6 +28,6 @@ export class Bet {
     return `$${this._amount} on (${this._outcome.toString()})`;
   }
   equals(bet: Bet) {
-    return this._outcome.equals(bet._outcome);
+    return bet.amount === this._amount && this._outcome.equals(bet._outcome);
   }
 }

@@ -104,7 +104,7 @@ describe("Game Class", () => {
       1000,
       Math.floor(Math.random() * 200)
     );
-    console.log("PLAYER STARTED PLAYING WITH $" + player.stake);
+    // console.log("PLAYER STARTED PLAYING WITH $" + player.stake);
 
     game.cycle(player);
     expect(player.stake).toBe(1000 - 10);
@@ -134,15 +134,15 @@ describe("Game Class", () => {
         game.cycle(player);
 
         if (player.roundsToGo === 0) {
-          console.log("PLAYER FINISHED PLAYING WITH STAKE $" + player.stake);
+          // console.log("PLAYER FINISHED PLAYING WITH STAKE $" + player.stake);
           expect(player.isPlaying()).toBeFalsy();
         }
       }
     } catch (error) {
-      console.log(
-        "PLAYER STOPPED PLAYING DUE TO REACHING TABLE LIMIT WITH STAKE $" +
-          player.stake
-      );
+      // console.log(
+      //   "PLAYER STOPPED PLAYING DUE TO REACHING TABLE LIMIT WITH STAKE $" +
+      //     player.stake
+      // );
       expect(error instanceof InvalidBet).toBeTruthy();
     }
   });

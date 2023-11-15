@@ -41,7 +41,7 @@ export class Wheel {
 
   public getOutcome(name: string) {
     if (this.allOutcomes.get(name)) {
-      return this.allOutcomes.get(name);
+      return this.allOutcomes.get(name)!;
     }
     throw new InvalidOutcome(name);
   }

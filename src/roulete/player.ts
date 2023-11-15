@@ -3,11 +3,15 @@ import { Wheel } from "./wheel";
 
 export abstract class Player {
   constructor(
-    protected table: Table,
-    protected wheel: Wheel,
+    protected _table: Table,
+    protected _wheel: Wheel,
     public stake: number,
     public roundsToGo: number
   ) {}
+
+  public get table() {
+    return this._table;
+  }
 
   placeBets() {
     this.roundsToGo--;
@@ -25,7 +29,7 @@ export abstract class Player {
     // console.log(`Lost $${bet.loseAmount()} for bet: ${bet.toString()}`);
   }
   isPlaying() {
-    return this.stake >= this.table.minimum && this.roundsToGo > 0;
+    return this.stake >= this._table.minimum && this.roundsToGo > 0;
   }
   reInit(stake: number, roundsToGo: number) {
     this.stake = stake;

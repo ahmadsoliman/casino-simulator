@@ -36,7 +36,7 @@ export class Table {
   }
 
   public deleteBet(bet: Bet) {
-    this._bets = this._bets.filter(cur => !cur.equals(bet));
+    this._bets = this._bets.filter(cur => !cur.outcome.equals(bet.outcome));
   }
 
   public isValid(withBet?: Bet) {

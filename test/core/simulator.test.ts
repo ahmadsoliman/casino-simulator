@@ -3,6 +3,7 @@ import {
   BinBuilder,
   Game,
   Martingale,
+  Player1326,
   PlayerRandom,
   SevenReds,
   Simulator,
@@ -98,6 +99,35 @@ describe("Simulator Class", () => {
       2000, 1240, 2280, 1260, 1780, 1850, 2110, 2050, 1670, 990, 2940, 1000,
       990, 2250, 1150, 1830, 1310, 2470, 1660, 990, 1000, 1850, 1610, 2100,
       2620, 1140,
+    ]);
+  });
+  it("should run simulator with a Player1326 player", () => {
+    const seed = 111;
+
+    const wheel = new Wheel(seed);
+    const binBuilder = new BinBuilder();
+    binBuilder.buildBins(wheel);
+
+    const table = new Table();
+    const game = new Game(wheel, table);
+
+    const player = new Player1326(table, wheel, 1000, 500);
+
+    const simulator = new Simulator(game, player);
+    simulator.gather();
+
+    expect(simulator.durations).toEqual([
+      250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250,
+      250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250,
+      250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250,
+      250, 250, 250, 250, 250,
+    ]);
+    expect(simulator.maxima).toEqual([
+      2070, 3670, 2900, 3340, 3110, 3860, 2300, 4240, 4030, 2870, 2840, 1950,
+      4830, 2490, 3640, 2810, 3410, 3070, 3230, 2190, 2970, 3190, 3220, 3560,
+      3960, 2450, 3710, 2680, 3370, 3470, 2670, 4040, 3170, 4290, 2740, 3660,
+      2860, 2900, 2320, 3990, 3540, 4970, 3560, 3330, 3010, 4030, 3920, 2720,
+      2160, 2900,
     ]);
   });
 });

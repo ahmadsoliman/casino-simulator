@@ -11,7 +11,7 @@ export class Passenger57 extends Player {
     this.black = wheel.getOutcome(BET_NAMES[BETS.BLACK]);
   }
   placeBets() {
-    this.table.placeBet(new Bet(this.table.minimum, this.black));
+    this._table.placeBet(new Bet(this._table.minimum, this.black));
     super.placeBets();
   }
 }

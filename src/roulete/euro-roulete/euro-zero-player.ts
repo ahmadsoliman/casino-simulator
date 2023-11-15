@@ -12,7 +12,7 @@ export class EuroZeroPlayer extends Player {
   }
 
   placeBets() {
-    this.table.placeBet(new Bet(100, this.zero));
+    this._table.placeBet(new Bet(100, this.zero));
     super.placeBets();
   }
 }
